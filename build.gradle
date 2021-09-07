@@ -1,0 +1,93 @@
+apply plugin: 'com.android.library'
+//apply plugin: 'com.novoda.bintray-release'
+def AAVersion='4.5.2'
+android {
+    compileSdkVersion 26
+    buildToolsVersion "28.0.2"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+    useLibrary 'org.apache.http.legacy'
+
+
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+
+    api project(':sdk')
+    api project(':farwolf.business')
+
+
+//    api "com.farwolf.weexplus:sdk:1.0.0"
+//    api "com.farwolf.weexplus:farwolf.business:1.0.3"
+
+    api 'com.github.bumptech.glide:glide:4.2.0'
+    api "com.android.support:recyclerview-v7:${project.supportLibVersion}"
+    api "com.android.support:support-v4:${project.supportLibVersion}"
+    api "com.android.support:appcompat-v7:${project.supportLibVersion}"
+    api 'com.alibaba:fastjson:1.1.46.android'
+    api 'com.squareup.picasso:picasso:2.5.2'
+    api "com.android.support:design:${project.supportLibVersion}"
+    api 'com.wang.avi:library:1.0.0'
+    api 'com.nineoldandroids:library:2.4.0'
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
+    api "org.androidannotations:androidannotations-api:$AAVersion"
+//    api 'com.umeng.analytics:analytics:latest.integration'
+    debugApi 'com.taobao.android:weex_analyzer:0.1.0.5'
+    api 'com.squareup.okhttp:okhttp:2.3.0'
+    api 'com.squareup.okhttp:okhttp-ws:2.3.0'
+    api 'com.squareup.okio:okio:1.0.1'
+    api 'com.jakewharton.scalpel:scalpel:1.1.2'
+    api 'com.taobao.android.weex_inspection:urlconnection_interceptor:1.0.0'
+    api 'com.taobao.android.weex_inspection:protocol:1.1.4.1'
+    api 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
+    api 'com.taobao.android:weex_inspector:0.20.3.0-beta'
+    //    api(':inspector ')
+    //    api project(':inspector')
+    api 'com.alibaba.android:bindingx-core:1.0.2'
+    api 'com.alibaba.android:bindingx_weex_plugin:1.0.2'
+    api 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    api 'io.reactivex.rxjava2:rxjava:2.0.0'
+    //    api 'com.alibaba.android:bindingx_weex_plugin:1.0.2'
+    api 'org.weex.plugin:plugin-loader:1.0.0'
+
+
+//    api project(':sdk')
+    //    api project(':weex_debug')
+    api 'com.android.support:multidex:1.0.3'
+//    implementation 'com.android.support:support-v4:25.3.1'
+}
+
+//publish {
+//    repoName = 'farwolf'
+//    //userOrg这个是用户的组织，我们创建的是个人帐号，也就是我们的用户名（后续会介绍，必须一致，改成你自己的bintrayName）
+//    userOrg = 'farwolf2010'
+//    //我们的组id 类比'com.github.bumptech.glide:glide:3.7.0' 中的 com.github.bumptech.glide 这一部分
+//    groupId = 'com.farwolf.weexplus'
+//    //原型id 类比'com.github.bumptech.glide:glide:3.7.0' 中的glide这一部分
+//    artifactId = 'farwolf.weex'
+//    //版本号 类比'com.github.bumptech.glide:glide:3.7.0' 中的3.7.0 这一部分。很重要，我们在更新aar文件的时候需要提升版本号，类似更新apk
+//    publishVersion = '1.0.10'
+//    //描述，大致介绍自己的类库
+//    desc = 'weexplus基础库'
+//
+//}
+
